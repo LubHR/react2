@@ -1,22 +1,21 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {IuserProps} from "../../modules/userIProps";
+import {getUsers} from "./api.users";
 
-const UsersComponent:FC<IuserProps> = ({id}) => {
+const UsersComponent = () => {
 
-    const [user, setUser] = useState<any>({})
+    const [user, setUser] = useState<IuserProps[]>([])
 
     useEffect(() =>{
-        fetch('https://jsonplaceholder.typicode.com/users/'+ id)
-            .then(res => res.json())
-            .then(value => {
+        getUsers().then((value:IuserProps[]) => {
                 setUser(value)
             })
-    },[id])
+    },[])
 
     return (
         <div>
             {
-                <h2>{user.id},{user.name}</h2>
+                user.map(value => <h2>{value.id} - {value.name}</h2>)
             }
         </div>
     );
