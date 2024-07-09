@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
-import {IuserModel} from "../Props/IuserModel";
+import {IuserModel} from "../Model/IuserModel";
 
-interface IUeserPageProps {
+interface IUserPageProps {
     users: IuserModel[];
 }
 
-const UserComoonent: FC<IUeserPageProps> = ({users}) => {
+const UsersComoonent: FC<IUserPageProps> = ({users}) => {
     return (
         <div>
             {
@@ -17,4 +17,4 @@ const UserComoonent: FC<IUeserPageProps> = ({users}) => {
     );
 };
 
-export default UserComoonent;
+export default UsersComoonent;

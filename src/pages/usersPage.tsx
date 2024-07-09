@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {IuserModel} from "../Props/IuserModel";
-import UserComoonent from "../component/UserComoonent";
+import {IuserModel} from "../Model/IuserModel";
+import UsersComoonent from "../component/UsersComoonent";
 import {userApi} from "../services/urls";
 
 const UsersPage = () => {
@@ -13,7 +13,7 @@ const UsersPage = () => {
 
     return (
         <div>
-            <UserComoonent users={users}/>
+            <UsersComoonent users={users}/>
         </div>
     );
 };
