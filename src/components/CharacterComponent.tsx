@@ -5,13 +5,14 @@ import {useSearchParams} from "react-router-dom";
 
 const CharacterComponent = () => {
 
-    const[query,setQuery] = useSearchParams()
+    const [query,setQuery] = useSearchParams({page: '1'})
 
-    const [character, setCharacter] = useState<ICharacter[]>([])
+    const [characters, setCharacter] = useState<ICharacter[]>([])
 
-    const currentpage = query.get('page') || '1'
     useEffect(() => {
-        characterService.getAll(currentpage).then(value => {
+        const currentPage = query.get('page') || '1'
+        console.log(currentPage)
+        characterService.getAll(currentPage).then(value => {
             setCharacter(value.data.results)
         })
     }, [query]);
@@ -19,7 +20,7 @@ const CharacterComponent = () => {
     return (
         <div>
             {
-                character.map(character => <div key={character.id}>{character.id} - {character.name}</div>)
+                characters.map(character => <div key={character.id}>{character.id} - {character.name}</div>)
             }
         </div>
     );

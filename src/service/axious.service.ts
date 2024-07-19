@@ -11,7 +11,9 @@ const characterService = {
     getAll: async (page:string)=>{
         const axiosResponse = await axiosInstant.get<ICharacterRespose>(urls.character.all,
             {
-                params:page
+                params:{
+                    page:page
+                }
             })
         return axiosResponse;
     }
