@@ -5,8 +5,9 @@ import './HeaderCss.css'
 const HeaderComponent = () => {
     return (
         <div className="Header">
-            <NavLink to={'/'} className={'Link'}>AuthPage</NavLink>
             <NavLink to={'register'} className={'Link'}>Registration</NavLink>
+            <NavLink to={'/'} className={'Link'}>AuthPage</NavLink>
+            <NavLink to={'cars'} className={'Link'}>Cars</NavLink>
         </div>
     );
 };

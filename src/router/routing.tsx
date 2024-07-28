@@ -1,8 +1,8 @@
 import {createBrowserRouter} from "react-router-dom";
 import MainLayouts from "../layouts/MainLayouts";
 import AuthPage from "../pages/AuthPage";
-import {ReactComponent} from "*.svg";
 import RegPage from "../pages/RegPage";
+import CarsPage from "../pages/CarsPage";
 
 export const router = createBrowserRouter([
     {
@@ -11,7 +11,8 @@ export const router = createBrowserRouter([
         errorElement:<h2>PovnaShlypa</h2>,
         children:[
             {index:true,element:<AuthPage/>},
-            {path:'/register',element:<RegPage/>}
+            {path:'/register',element:<RegPage/>},
+            {path:'/cars', element:<CarsPage/>}
         ]
     }
 ])
