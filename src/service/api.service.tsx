@@ -11,7 +11,7 @@ let axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use(requestObject => {
-    if(localStorage.getItem('tokenPair') && requestObject.url !== "/auth"){
+    if(localStorage.getItem('tokenPair') && (requestObject.url !== "/auth" && requestObject.url !== "/auth/refresh")){
         requestObject.headers.set("Authorization", "Bearer "
             + retrivelocalStorage<TokenRefreshPairModel>('tokenPair').access)
     }
@@ -29,14 +29,21 @@ const authService = {
     authenticate: async (data:TokenObtainPairModel):Promise<void> => {
         let auth = await axiosInstance.post<TokenRefreshPairModel>('/auth',data);
         localStorage.setItem('tokenPair', JSON.stringify(auth.data));
+    },
+    refresh: async()=>{
+        const refreshToken = retrivelocalStorage<TokenRefreshPairModel>('tokenPair').refresh;
+        const respocne = await axiosInstance.post<TokenRefreshPairModel>('/auth/refresh',{refresh:refreshToken});
+        localStorage.setItem('tokenPair', JSON.stringify(respocne.data));
     }
 }
 
 const carService = {
-    getCars: async ():Promise<CarsPaginationModel> =>{
-        let responce = await axiosInstance.get<CarsPaginationModel>('/cars')
+    getCars: async (page:string = '1'):Promise<CarsPaginationModel> =>{
+        let responce = await axiosInstance.get<CarsPaginationModel>('/cars', {params:{page}})
         return responce.data
     }
 }
+
+
 
 export {userService,authService,carService}
