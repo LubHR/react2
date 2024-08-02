@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import CarsComponent from "../component/CarsComponent";
 import {carsService} from "../service/axious";
 import {CarsPaginatedModel} from "../model/CarsPaginatedModel";
+import {AxiosError} from "axios";
 
 const CarsPage = () => {
 
