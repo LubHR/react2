@@ -7,6 +7,7 @@ const HeaderComponent = () => {
         <div>
             <NavLink to={'/'} className={'Link'}>Auth</NavLink>
             <NavLink to={'/registration'} className={'Link'}>Regist</NavLink>
+            <NavLink to={'/cars'} className={'Link'}>Cars</NavLink>
             <hr/>
         </div>
     );
